@@ -27,8 +27,8 @@ pipeline {
         stage('Run Container') {
             steps {
                 sh """
-                docker rm -f app || true
-                docker run -d -p 3000:3000 --name app $IMAGE_NAME
+                    docker rm -f app || true
+                    docker run -d -p 3000:3000 --name app $IMAGE_NAME
                 """
                 sleep 5
             }
@@ -36,7 +36,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh "TEST_HOST=$VM_IP npm test"
+                sh "docker exec app npm test"
             }
         }
     }
@@ -44,6 +44,7 @@ pipeline {
     post {
         always {
             echo 'Pipeline finished'
+            sh "docker logs app || true"
         }
     }
 }
