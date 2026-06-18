@@ -25,12 +25,15 @@ app.get('/health', (req, res) => {
   res.json({
     status: 'OK',
     service: 'championsleague-app',
+    uptime: process.uptime(),
     timestamp: new Date().toISOString()
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Champions League app running on port ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Champions League app running on port ${PORT}`);
+  console.log(`📡 Health check: /health`);
+  console.log(`⚽ API: /api/teams`);
 });
 
 module.exports = app;
