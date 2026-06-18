@@ -6,13 +6,6 @@ pipeline {
         VM_IP = "192.168.56.101"
     }
 
-    stages {
-
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
 
         stage('Build Docker Image') {
             steps {
