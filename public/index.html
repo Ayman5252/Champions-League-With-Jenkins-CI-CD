@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UEFA Champions League</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      color: white;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      color: #fbbf24;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+    }
+
+    .header .subtitle {
+      color: #94a3b8;
+      font-size: 1.1rem;
+    }
+
+    .card {
+      background: rgba(30, 58, 95, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s ease;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      color: #60a5fa;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-content {
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .teams-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .teams-list li {
+      background: rgba(15, 23, 42, 0.5);
+      padding: 12px 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .teams-list li::before {
+      content: "⚽";
+    }
+
+    .champion {
+      color: #fbbf24;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #059669;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 10px;
+      margin-right: 8px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.2s; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="header">
+      <h1>🏆 UEFA CHAMPIONS LEAGUE</h1>
+      <p class="subtitle">Europe's Premier Club Competition</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📅 Tournament Info</div>
+      <div class="card-content">
+        <p>The UEFA Champions League is Europe's most prestigious annual club football competition.</p>
+        <span class="badge">36 Clubs</span>
+        <span class="badge">League Phase</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏅 Champion</div>
+      <div class="card-content">
+        <p>Most Successful Club:</p>
+        <p class="champion">⚪ Real Madrid</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚽ Top Clubs</div>
+      <div class="card-content">
+        <ul class="teams-list">
+          <li>Real Madrid</li>
+          <li>Manchester City</li>
+          <li>Bayern Munich</li>
+          <li>Barcelona</li>
+          <li>Liverpool</li>
+          <li>Paris Saint-Germain</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Built with Jenkins CI/CD Pipeline</p>
+      <p>By Ayman Osama Mossad Mohamed | Data Engineering - ITI</p>
+    </div>
+
+  </div>
+</body>
+</html>
