@@ -1,53 +1,51 @@
 pipeline {
     agent any
-    
-    tools {
-        nodejs 'node-18'
+
+    environment {
+        IMAGE_NAME = "championsleague-app"
+        VM_IP = "192.168.56.101"
     }
-    
+
     stages {
-        stage('Checkout SCM') {
+
+        stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-        
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        
-        stage('Run Tests') {
-            steps {
-                sh 'npm test'
-            }
-        }
-        
+
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t worldcup-jenkins .'
+                sh "docker build -t $IMAGE_NAME ."
             }
         }
-        
-        stage('Deploy Container') {
+
+        stage('Run Container') {
             steps {
-                sh 'docker stop worldcup-app || true'
-                sh 'docker rm worldcup-app || true'
-                sh 'docker run -d -p 3000:3000 --name worldcup-app worldcup-jenkins'
+                sh """
+                docker rm -f app || true
+                docker run -d -p 3000:3000 --name app $IMAGE_NAME
+                """
+                sleep 5
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh "TEST_HOST=$VM_IP npm test"
             }
         }
     }
-    
+
     post {
         always {
-            echo 'Pipeline execution completed'
-        }
-        success {
-            echo '✅ All stages passed successfully'
+            echo 'Pipeline finished'
         }
         failure {
-            echo '❌ Pipeline failed - check logs'
+            echo '❌ Pipeline failed'
+        }
+        success {
+            echo '✅ Pipeline succeeded'
         }
     }
 }

@@ -1,6 +1,6 @@
 const http = require('http');
 
-const HOST = process.env.TEST_HOST || '127.0.0.1';
+const HOST = process.env.TEST_HOST || '192.168.56.101';
 const PORT = 3000;
 
 const testEndpoint = (path, expectedStatus, callback) => {

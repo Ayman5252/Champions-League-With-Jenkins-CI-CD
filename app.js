@@ -31,9 +31,7 @@ app.get('/health', (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Champions League app running on port ${PORT}`);
-  console.log(`📡 Health check: /health`);
-  console.log(`⚽ API: /api/teams`);
+  console.log(`Champions League app running on port ${PORT}`);
 });
 
 module.exports = app;
