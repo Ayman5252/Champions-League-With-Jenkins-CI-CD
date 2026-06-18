@@ -1,11 +1,22 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     environment {
         IMAGE_NAME = "championsleague-app"
         VM_IP = "192.168.56.101"
     }
 
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
@@ -33,12 +44,6 @@ pipeline {
     post {
         always {
             echo 'Pipeline finished'
-        }
-        failure {
-            echo '❌ Pipeline failed'
-        }
-        success {
-            echo '✅ Pipeline succeeded'
         }
     }
 }
